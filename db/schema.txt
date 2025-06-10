@@ -1,0 +1,17 @@
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    mobile VARCHAR(15) UNIQUE,
+    otp VARCHAR(6)
+);
+
+CREATE TABLE loans (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    emi_amount DECIMAL(10,2),
+    next_emi_date DATE,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+INSERT INTO users (name, mobile) VALUES ('Parth', '9999912345');
+INSERT INTO loans (user_id, emi_amount, next_emi_date) VALUES (1, 4500.00, '2025-06-10');
